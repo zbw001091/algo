@@ -1,4 +1,3 @@
-package sorts;
 
 /**
  * 计数排序
