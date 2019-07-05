@@ -204,9 +204,7 @@ public class SinglyLinkedList {
 			while (q.next != null && q.next.next != null) {
 				p = p.next;
 				q = q.next.next;
-
 			}
-
 			System.out.println("中间节点" + p.data);
 			System.out.println("开始执行奇数节点的回文判断");
 			Node leftLink = null;
@@ -217,14 +215,12 @@ public class SinglyLinkedList {
 				leftLink = inverseLinkList(p).next;
 				System.out.println("左边第一个节点" + leftLink.data);
 				System.out.println("右边第一个节点" + rightLink.data);
-
 			} else {
 				// p q 均为中点
 				rightLink = p.next;
 				leftLink = inverseLinkList(p);
 			}
 			return TFResult(leftLink, rightLink);
-
 		}
 	}
 
