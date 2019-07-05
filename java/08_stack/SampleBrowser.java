@@ -1,4 +1,3 @@
-package algo.lesson08;
 
 /**
  * 使用前后栈实现浏览器的前进后退。

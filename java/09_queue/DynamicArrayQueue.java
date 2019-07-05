@@ -1,4 +1,3 @@
-package queue;
 
 /**
  * Created by wangzheng on 2018/10/9.
