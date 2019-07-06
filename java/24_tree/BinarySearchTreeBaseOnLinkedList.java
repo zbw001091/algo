@@ -1,19 +1,8 @@
-public class BinarySearchTree {
+// 用链表实现的排序二叉树
+public class BinarySearchTreeBaseOnLinkedList {
 	private Node tree;
 
-	public Node find(int data) {
-		Node p = tree;
-		while (p != null) {
-			if (data < p.data)
-				p = p.left;
-			else if (data > p.data)
-				p = p.right;
-			else
-				return p;
-		}
-		return null;
-	}
-
+	// 构建 排序二叉树
 	public void insert(int data) {
 		if (tree == null) {
 			tree = new Node(data);
@@ -38,6 +27,41 @@ public class BinarySearchTree {
 		}
 	}
 
+	// O(log2n)
+	// 因为是排序二叉树（除了1个case，有序序列时会退化成单链表，O(n)）
+	public Node find(int data) {
+		Node p = tree;
+		while (p != null) {
+			if (data < p.data)
+				p = p.left;
+			else if (data > p.data)
+				p = p.right;
+			else
+				return p;
+		}
+		return null;
+	}
+
+	public Node findMin() {
+		if (tree == null)
+			return null;
+		Node p = tree;
+		while (p.left != null) {
+			p = p.left;
+		}
+		return p;
+	}
+
+	public Node findMax() {
+		if (tree == null)
+			return null;
+		Node p = tree;
+		while (p.right != null) {
+			p = p.right;
+		}
+		return p;
+	}
+
 	public void delete(int data) {
 		Node p = tree; // p指向要删除的节点，初始化指向根节点
 		Node pp = null; // pp记录的是p的父节点
@@ -49,7 +73,7 @@ public class BinarySearchTree {
 				p = p.left;
 		}
 		if (p == null)
-			return; // 没有找到
+			return; // 没有找到要删的节点
 
 		// 要删除的节点有两个子节点
 		if (p.left != null && p.right != null) { // 查找右子树中最小节点
@@ -80,34 +104,10 @@ public class BinarySearchTree {
 		else
 			pp.right = child;
 	}
-
-	public Node findMin() {
-		if (tree == null)
-			return null;
-		Node p = tree;
-		while (p.left != null) {
-			p = p.left;
-		}
-		return p;
-	}
-
-	public Node findMax() {
-		if (tree == null)
-			return null;
-		Node p = tree;
-		while (p.right != null) {
-			p = p.right;
-		}
-		return p;
-	}
-
-	public static class Node {
-		private int data;
-		private Node left;
-		private Node right;
-
-		public Node(int data) {
-			this.data = data;
-		}
+	
+	// 求二叉树的高度
+	public int getTreeHeight(Node tree) {
+		
+		return 0;
 	}
 }
