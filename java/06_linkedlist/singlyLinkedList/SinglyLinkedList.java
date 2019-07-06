@@ -46,7 +46,7 @@ public class SinglyLinkedList {
 
 	// 顺序插入
 	// 插入到链表尾部
-	public void insertToTail(int value) {
+	public Node insertToTail(int value) {
 		Node newNode = new Node(value, null);
 		// 空链表，可以插入新节点作为head，也可以不操作
 		if (head == null) {
@@ -59,6 +59,18 @@ public class SinglyLinkedList {
 			newNode.next = q.next;
 			q.next = newNode;
 		}
+		return newNode;
+	}
+	
+	// 构建1条有环的单链
+	public Node buildLinkedListWithLoop() {
+		int singlyDataWithLoop[] = { 1,2,5,2,2 };
+		Node lastNode = null;
+		for (int i = 0; i < singlyDataWithLoop.length; i++) {
+			lastNode = this.insertToTail(singlyDataWithLoop[i]);
+		}
+		lastNode.next = this.head;
+		return this.head;
 	}
 
 	// 在p节点的后面，进行插入
@@ -277,7 +289,6 @@ public class SinglyLinkedList {
 	public static void main(String[] args) {
 
 		SinglyLinkedList link = new SinglyLinkedList();
-		System.out.println("hello");
 		// int data[] = {1};
 		// int data[] = {1,2};
 		// int data[] = {1,2,3,1};
@@ -292,7 +303,9 @@ public class SinglyLinkedList {
 		}
 		
 		// 链表反转
-		System.out.println("##### 以下开始,链表反转 #####");
+		System.out.println("##############################");
+		System.out.println("##### 1.以下开始,链表反转 #####");
+		System.out.println("##############################");
 		System.out.println("原始链表:");
 		link.printAll();
 		Node p = link.inverseLinkList_head(link.head);
@@ -302,7 +315,9 @@ public class SinglyLinkedList {
 		}
 		System.out.println();
 		
-		System.out.println("##### 以下开始,链表回文 #####");
+		System.out.println("##############################");
+		System.out.println("##### 2.以下开始,链表回文 #####");
+		System.out.println("##############################");
 		System.out.println("原始链表:");
 		link.printAll();
 		if (link.palindrome()) {
@@ -310,6 +325,34 @@ public class SinglyLinkedList {
 		} else {
 			System.out.println("不是回文链表");
 		}
+		
+		System.out.println("##############################");
+		System.out.println("##### 3.以下开始,链表反转 #####");
+		System.out.println("##############################");
+		SinglyLinkedList singlyll = new SinglyLinkedList();
+		int singlyData[] = { 1,2,5,2,2 };
+		for (int i = 0; i < singlyData.length; i++) {
+			singlyll.insertToTail(singlyData[i]);
+		}
+		System.out.print("原始链表:");
+		singlyll.printAll();
+		Node singlyReversellNode = LinkedListAlgo.reverse(singlyll.head);
+		System.out.print("反转后的链表:");
+		while (singlyReversellNode != null) {
+			System.out.print(singlyReversellNode.data + " ");
+			singlyReversellNode = singlyReversellNode.next;
+		}
+		System.out.println();
+		
+		System.out.println("##############################");
+		System.out.println("##### 4.以下开始,链表测环 #####");
+		System.out.println("##############################");
+		SinglyLinkedList singlyllWithLoop = new SinglyLinkedList();
+		Node head = singlyllWithLoop.buildLinkedListWithLoop();
+		boolean isWithCircle = LinkedListAlgo.checkCircle(head);
+		System.out.println("expect true, actual: " + isWithCircle);
+		boolean isWithCircle2 = LinkedListAlgo.checkCircle(singlyReversellNode);
+		System.out.println("expect false, actual: " + isWithCircle2);
 	}
 
 }
