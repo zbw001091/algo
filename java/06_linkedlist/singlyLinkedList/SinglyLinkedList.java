@@ -1,3 +1,4 @@
+package singlyLinkedList;
 
 /**
  * 1）单链表的插入、删除、查找操作； 2）链表中存储的是int类型的数据；
@@ -13,7 +14,6 @@ public class SinglyLinkedList {
 		while (p != null && p.data != value) {
 			p = p.next;
 		}
-
 		return p;
 	}
 
@@ -24,7 +24,6 @@ public class SinglyLinkedList {
 			p = p.next;
 			++pos;
 		}
-
 		return p;
 	}
 
@@ -62,6 +61,7 @@ public class SinglyLinkedList {
 		}
 	}
 
+	// 在p节点的后面，进行插入
 	public void insertAfter(Node p, int value) {
 		Node newNode = new Node(value, null);
 		insertAfter(p, newNode);
@@ -70,11 +70,11 @@ public class SinglyLinkedList {
 	public void insertAfter(Node p, Node newNode) {
 		if (p == null)
 			return;
-
 		newNode.next = p.next;
 		p.next = newNode;
 	}
 
+	// 在p节点的前面，进行插入
 	public void insertBefore(Node p, int value) {
 		Node newNode = new Node(value, null);
 		insertBefore(p, newNode);
@@ -99,7 +99,6 @@ public class SinglyLinkedList {
 
 		newNode.next = p;
 		q.next = newNode;
-
 	}
 
 	public void deleteByNode(Node p) {
@@ -177,10 +176,8 @@ public class SinglyLinkedList {
 			} else {
 				break;
 			}
-
 		}
 
-		System.out.println("什么结果");
 		if (l == null && r == null) {
 			System.out.println("什么结果");
 			return true;
@@ -188,33 +185,33 @@ public class SinglyLinkedList {
 			return false;
 		}
 	}
+	
 	// 判断是否为回文
-
 	public boolean palindrome() {
 		if (head == null) {
 			return false;
 		} else {
-			System.out.println("开始执行找到中间节点");
+			System.out.println("判断是否回文: 开始执行找到中间节点");
 			Node p = head;
 			Node q = head;
 			if (p.next == null) {
-				System.out.println("只有一个元素");
+				System.out.println("判断是否回文: 只有一个元素");
 				return true;
 			}
 			while (q.next != null && q.next.next != null) {
 				p = p.next;
 				q = q.next.next;
 			}
-			System.out.println("中间节点" + p.data);
-			System.out.println("开始执行奇数节点的回文判断");
+			System.out.println("判断是否回文: 中间节点:" + p.data);
+			System.out.println("判断是否回文: 开始执行奇数节点的回文判断");
 			Node leftLink = null;
 			Node rightLink = null;
 			if (q.next == null) {
 				// p 一定为整个链表的中点，且节点数目为奇数
 				rightLink = p.next;
 				leftLink = inverseLinkList(p).next;
-				System.out.println("左边第一个节点" + leftLink.data);
-				System.out.println("右边第一个节点" + rightLink.data);
+				System.out.println("判断是否回文: 左边第一个节点" + leftLink.data);
+				System.out.println("判断是否回文: 右边第一个节点" + rightLink.data);
 			} else {
 				// p q 均为中点
 				rightLink = p.next;
@@ -225,10 +222,11 @@ public class SinglyLinkedList {
 	}
 
 	// 带结点的链表翻转
+	// 从原链表的p节点开始，对p后面右边的链表进行翻转
 	public Node inverseLinkList_head(Node p) {
-		// Head 为新建的一个头结点
+		// Head为新建的一个头结点
 		Node Head = new Node(9999, null);
-		// p 为原来整个链表的头结点,现在Head指向 整个链表
+		// p为原来整个链表的头结点,现在Head指向整个链表
 		Head.next = p;
 		/*
 		 * 带头结点的链表翻转等价于 从第二个元素开始重新头插法建立链表
@@ -241,7 +239,7 @@ public class SinglyLinkedList {
 			next = Cur.next;
 			Cur.next = Head.next;
 			Head.next = Cur;
-			System.out.println("first " + Head.data);
+//			System.out.println("first " + Head.data);
 
 			Cur = next;
 		}
@@ -253,15 +251,14 @@ public class SinglyLinkedList {
 	}
 
 	// 无头结点的链表翻转
+	// 从原链表head开始，到p节点为止，这段链表进行翻转
 	public Node inverseLinkList(Node p) {
-
 		Node pre = null;
 		Node r = head;
 		System.out.println("z---" + r.data);
 		Node next = null;
 		while (r != p) {
 			next = r.next;
-
 			r.next = pre;
 			pre = r;
 			r = next;
@@ -271,25 +268,10 @@ public class SinglyLinkedList {
 		// 返回左半部分的中点之前的那个节点
 		// 从此处开始同步像两边比较
 		return r;
-
 	}
 
 	public static Node createNode(int value) {
 		return new Node(value, null);
-	}
-
-	public static class Node {
-		private int data;
-		private Node next;
-
-		public Node(int data, Node next) {
-			this.data = data;
-			this.next = next;
-		}
-
-		public int getData() {
-			return data;
-		}
 	}
 
 	public static void main(String[] args) {
@@ -308,19 +290,25 @@ public class SinglyLinkedList {
 			// link.insertToHead(data[i]);
 			link.insertToTail(data[i]);
 		}
-		// link.printAll();
-		// Node p = link.inverseLinkList_head(link.head);
-		// while(p != null){
-		// System.out.println("aa"+p.data);
-		// p = p.next;
-		// }
-
-		System.out.println("打印原始:");
+		
+		// 链表反转
+		System.out.println("##### 以下开始,链表反转 #####");
+		System.out.println("原始链表:");
+		link.printAll();
+		Node p = link.inverseLinkList_head(link.head);
+		while(p != null){
+			System.out.print(p.data+" ");
+			p = p.next;
+		}
+		System.out.println();
+		
+		System.out.println("##### 以下开始,链表回文 #####");
+		System.out.println("原始链表:");
 		link.printAll();
 		if (link.palindrome()) {
-			System.out.println("回文");
+			System.out.println("是回文链表");
 		} else {
-			System.out.println("不是回文");
+			System.out.println("不是回文链表");
 		}
 	}
 
