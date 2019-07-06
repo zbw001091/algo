@@ -3,7 +3,7 @@ package singlyLinkedList;
 /**
  * 1）单链表的插入、删除、查找操作； 2）链表中存储的是int类型的数据；
  *
- * Author：Zheng
+ * Author：Zheng, ZhangBangwei
  */
 public class SinglyLinkedList {
 
@@ -353,6 +353,27 @@ public class SinglyLinkedList {
 		System.out.println("expect true, actual: " + isWithCircle);
 		boolean isWithCircle2 = LinkedListAlgo.checkCircle(singlyReversellNode);
 		System.out.println("expect false, actual: " + isWithCircle2);
+		
+		System.out.println("####################################");
+		System.out.println("##### 5.以下开始,合并2个有序链表 #####");
+		System.out.println("####################################");
+		SinglyLinkedList singlyllBeforeMerge1 = new SinglyLinkedList();
+		int singlyDataBeforeMerge1[] = { 1,2,5,8,10 };
+		for (int i = 0; i < singlyDataBeforeMerge1.length; i++) {
+			singlyllBeforeMerge1.insertToTail(singlyDataBeforeMerge1[i]);
+		}
+		SinglyLinkedList singlyllBeforeMerge2 = new SinglyLinkedList();
+		int singlyDataBeforeMerge2[] = { 3,11,12 };
+		for (int i = 0; i < singlyDataBeforeMerge2.length; i++) {
+			singlyllBeforeMerge2.insertToTail(singlyDataBeforeMerge2[i]);
+		}
+		Node mergedLinkedListNode = LinkedListAlgo.mergeTwoLists(singlyllBeforeMerge1.head, singlyllBeforeMerge2.head);
+		System.out.print("合并后的有序链表:");
+		while (mergedLinkedListNode != null) {
+			System.out.print(mergedLinkedListNode.data + " ");
+			mergedLinkedListNode = mergedLinkedListNode.next;
+		}
+		System.out.println();
 	}
 
 }
