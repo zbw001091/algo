@@ -1,6 +1,6 @@
 // 用链表实现的排序二叉树
 public class BinarySearchTreeBaseOnLinkedList {
-	private Node tree;
+	public Node tree;
 
 	// 构建 排序二叉树
 	public void insert(int data) {
@@ -105,9 +105,74 @@ public class BinarySearchTreeBaseOnLinkedList {
 			pp.right = child;
 	}
 	
-	// 求二叉树的高度
-	public int getTreeHeight(Node tree) {
-		
-		return 0;
+	// 求二叉树的高度(递归recursive)
+	public int getTreeHeight(Node treeNode) {
+		if (treeNode == null) {
+			return 0;
+		} else {
+			int l = getTreeHeight(treeNode.left);
+			int r = getTreeHeight(treeNode.right);
+			return l>r ? (l+1):(r+1);
+		}
+	}
+	
+	// 求二叉树的总节点个数(递归recursive)
+	public int countTreeNodes(Node treeNode) {
+		if (treeNode == null) {
+			return 0;
+		} else {
+			int l = countTreeNodes(treeNode.left);
+			int r = countTreeNodes(treeNode.right);
+			return l+r+1;
+		}
+	}
+	
+	// 求某节点的父节点(递归recursive)
+	public Node getParentNode(Node treeNode, int childNodeData) {
+		if (treeNode == null) {
+			return null;
+		}
+		if (treeNode.left.data == childNodeData || treeNode.right.data == childNodeData) {
+			return treeNode;
+		}
+		Node parent = getParentNode(treeNode.left, childNodeData);
+		if (parent != null) {
+			return parent;
+		} else {
+			return getParentNode(treeNode.right, childNodeData);
+		}
+	}
+	
+	// 二叉树的遍历(先序)(递归recursive)
+	public void preTraverse(Node treeNode) {
+		if (treeNode == null) {
+			return;
+		} else {
+			System.out.print(treeNode.data + " ");
+			preTraverse(treeNode.left);
+			preTraverse(treeNode.right);
+		}
+	}
+	
+	// 二叉树的遍历(中序)(递归recursive)
+	public void middleTraverse(Node treeNode) {
+		if (treeNode == null) {
+			return;
+		} else {
+			middleTraverse(treeNode.left);
+			System.out.print(treeNode.data + " ");
+			middleTraverse(treeNode.right);
+		}
+	}
+	
+	// 二叉树的遍历(后序)(递归recursive)
+	public void postTraverse(Node treeNode) {
+		if (treeNode == null) {
+			return;
+		} else {
+			postTraverse(treeNode.left);
+			postTraverse(treeNode.right);
+			System.out.print(treeNode.data + " ");
+		}
 	}
 }
