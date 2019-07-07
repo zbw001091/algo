@@ -106,6 +106,7 @@ public class BinarySearchTreeBaseOnLinkedList {
 	}
 	
 	// 求二叉树的高度(递归recursive)
+	// 带返回值的recursive递归
 	public int getTreeHeight(Node treeNode) {
 		if (treeNode == null) {
 			return 0;
@@ -117,6 +118,7 @@ public class BinarySearchTreeBaseOnLinkedList {
 	}
 	
 	// 求二叉树的总节点个数(递归recursive)
+	// 带返回值的recursive递归
 	public int countTreeNodes(Node treeNode) {
 		if (treeNode == null) {
 			return 0;
@@ -128,6 +130,7 @@ public class BinarySearchTreeBaseOnLinkedList {
 	}
 	
 	// 求某节点的父节点(递归recursive)
+	// 带返回值的recursive递归
 	public Node getParentNode(Node treeNode, int childNodeData) {
 		if (treeNode == null) {
 			return null;
@@ -143,7 +146,8 @@ public class BinarySearchTreeBaseOnLinkedList {
 		}
 	}
 	
-	// 二叉树的遍历(先序)(递归recursive)
+	// 二叉树的遍历【深度优先】(先序)(递归recursive)
+	// 不带返回值的recursive递归
 	public void preTraverse(Node treeNode) {
 		if (treeNode == null) {
 			return;
@@ -154,7 +158,8 @@ public class BinarySearchTreeBaseOnLinkedList {
 		}
 	}
 	
-	// 二叉树的遍历(中序)(递归recursive)
+	// 二叉树的遍历【深度优先】(中序)(递归recursive)
+	// 不带返回值的recursive递归
 	public void middleTraverse(Node treeNode) {
 		if (treeNode == null) {
 			return;
@@ -165,7 +170,13 @@ public class BinarySearchTreeBaseOnLinkedList {
 		}
 	}
 	
+	// TODO 二叉树的遍历【深度优先】(中序)(不用递归，用迭代)
+	public void middleTraverseWithWhile(Node treeNode) {
+		
+	}
+	
 	// 二叉树的遍历(后序)(递归recursive)
+	// 不带返回值的recursive递归
 	public void postTraverse(Node treeNode) {
 		if (treeNode == null) {
 			return;
@@ -174,5 +185,10 @@ public class BinarySearchTreeBaseOnLinkedList {
 			postTraverse(treeNode.right);
 			System.out.print(treeNode.data + " ");
 		}
+	}
+	
+	// TODO 二叉树的层次遍历【广度优先】
+	public void traverseByLevel(Node treeNode) {
+		
 	}
 }
