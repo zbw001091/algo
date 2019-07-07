@@ -1,4 +1,7 @@
-
+/**
+ * 插入排序
+ *
+ */
 public class InsertionSort {
 
 	// 插入排序，a表示数组，n表示数组大小
