@@ -19,20 +19,26 @@ public class MergeSort {
 		
 		// 取start到end之间的中间位置q,防止（start+end）的和超过int类型最大值
 		int mid = start + (end - start) / 2;
+		System.out.println(mid);
 		// 分治递归
 		mergeSortInternally(a, start, mid);
 		mergeSortInternally(a, mid + 1, end);
 		
-		// 将A[start...mid]和A[mid+1...end]合并为A[start...end]
+		// 将a[start...mid]和a[mid+1...end]合并为a[start...end]
 		merge(a, start, mid, end);
 	}
 
-	private static void merge(int[] a, int p, int q, int r) {
-		int i = p;
-		int j = q + 1;
+	/**
+	 * 合并(无哨兵)
+	 *
+	 */
+	// 将2段有序表，a[begin...mid]和a[mid+1...stop]合并为a[begin...stop]
+	private static void merge(int[] a, int begin, int mid, int stop) {
+		int i = begin;
+		int j = mid + 1;
 		int k = 0; // 初始化变量i, j, k
-		int[] tmp = new int[r - p + 1]; // 申请一个大小跟a[p...r]一样的临时数组
-		while (i <= q && j <= r) {
+		int[] tmp = new int[stop - begin + 1]; // 申请一个大小跟a[p...r]一样的临时数组
+		while (i <= mid && j <= stop) { // 在大多数情况下，越界的情况是非常少的，那么每一次循环对越界的检查也会浪费 CPU 资源，而哨兵就是优化条件判断的。
 			if (a[i] <= a[j]) {
 				tmp[k++] = a[i++]; // i++等于i:=i+1
 			} else {
@@ -42,10 +48,10 @@ public class MergeSort {
 
 		// 判断哪个子数组中有剩余的数据
 		int start = i;
-		int end = q;
-		if (j <= r) {
+		int end = mid;
+		if (j <= stop) {
 			start = j;
-			end = r;
+			end = stop;
 		}
 
 		// 将剩余的数据拷贝到临时数组tmp
@@ -54,39 +60,35 @@ public class MergeSort {
 		}
 
 		// 将tmp中的数组拷贝回a[p...r]
-		for (i = 0; i <= r - p; ++i) {
-			a[p + i] = tmp[i];
+		for (i = 0; i <= stop - begin; ++i) {
+			a[begin + i] = tmp[i];
 		}
 	}
 
 	/**
 	 * 合并(哨兵)
-	 *
-	 * @param arr
-	 * @param p
-	 * @param q
-	 * @param r
+	 * 哨兵的merge方法，相比无哨兵的merge方法，节省了1个while和1个(i <= mid && j <= stop)条件判断
 	 */
-	private static void mergeBySentry(int[] arr, int p, int q, int r) {
-		int[] leftArr = new int[q - p + 2];
-		int[] rightArr = new int[r - q + 1];
+	private static void mergeBySentry(int[] arr, int begin, int mid, int stop) {
+		int[] leftArr = new int[mid - begin + 2];
+		int[] rightArr = new int[stop - mid + 1];
 
-		for (int i = 0; i <= q - p; i++) {
-			leftArr[i] = arr[p + i];
+		for (int i = 0; i <= mid - begin; i++) {
+			leftArr[i] = arr[begin + i];
 		}
 		// 第一个数组添加哨兵（最大值）
-		leftArr[q - p + 1] = Integer.MAX_VALUE;
+		leftArr[mid - begin + 1] = Integer.MAX_VALUE;
 
-		for (int i = 0; i < r - q; i++) {
-			rightArr[i] = arr[q + 1 + i];
+		for (int i = 0; i < stop - mid; i++) {
+			rightArr[i] = arr[mid + 1 + i];
 		}
 		// 第二个数组添加哨兵（最大值）
-		rightArr[r - q] = Integer.MAX_VALUE;
+		rightArr[stop - mid] = Integer.MAX_VALUE;
 
 		int i = 0;
 		int j = 0;
-		int k = p;
-		while (k <= r) {
+		int k = begin;
+		while (k <= stop) {
 			// 当左边数组到达哨兵值时，i不再增加，直到右边数组读取完剩余值，同理右边数组也一样
 			if (leftArr[i] <= rightArr[j]) {
 				arr[k++] = leftArr[i++];
