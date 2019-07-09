@@ -27,6 +27,31 @@ public class BubbleSort {
 		}
 	}
 
+	// ZhangBangwei
+	// TODO 性能优化，冒泡排序
+	public static void bubbleSortZbw(int[]a, int n) {
+		if (n <= 1) {
+			return;
+		}
+		
+		boolean flag = false;
+		
+		while(true) {
+			flag = false;
+			for (int j = 0; j < n-1; j++) {
+				if (a[j] > a[j+1]) {
+					int tmp = a[j];
+					a[j] = a[j+1];
+					a[j+1] = tmp;
+					flag = true;
+				}
+			}
+			if (!flag) {
+				break;
+			}
+		}
+	}
+	
 	/**
 	 * 冒泡排序改进:在每一轮排序后记录最后一次元素交换的位置,作为下次比较的边界,对于边界外的元素在下次循环中无需比较.
 	 */

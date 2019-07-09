@@ -11,19 +11,20 @@ public class MergeSort {
 	}
 
 	// 递归调用函数
-	private static void mergeSortInternally(int[] a, int p, int r) {
+	// start/end，都是数组下标，最大为n-1
+	private static void mergeSortInternally(int[] a, int start, int end) {
 		// 递归终止条件
-		if (p >= r)
+		if (start >= end)
 			return;
-
-		// 取p到r之间的中间位置q,防止（p+r）的和超过int类型最大值
-		int q = p + (r - p) / 2;
+		
+		// 取start到end之间的中间位置q,防止（start+end）的和超过int类型最大值
+		int mid = start + (end - start) / 2;
 		// 分治递归
-		mergeSortInternally(a, p, q);
-		mergeSortInternally(a, q + 1, r);
-
-		// 将A[p...q]和A[q+1...r]合并为A[p...r]
-		merge(a, p, q, r);
+		mergeSortInternally(a, start, mid);
+		mergeSortInternally(a, mid + 1, end);
+		
+		// 将A[start...mid]和A[mid+1...end]合并为A[start...end]
+		merge(a, start, mid, end);
 	}
 
 	private static void merge(int[] a, int p, int q, int r) {

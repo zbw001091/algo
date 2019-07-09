@@ -8,7 +8,7 @@ public class SortApplication {
 		System.out.print("冒泡排序前: ");
 		System.out.println(Arrays.toString(bubbleData));
 		
-		BubbleSort.bubbleSort(bubbleData, bubbleData.length);
+		BubbleSort.bubbleSortZbw(bubbleData, bubbleData.length);
 		System.out.print("冒泡排序后: ");
 		System.out.println(Arrays.toString(bubbleData));
 		
@@ -59,14 +59,14 @@ public class SortApplication {
 		
 		
 		System.out.println("################################");
-		int quickData[] = { 1, 5, 3, 2, 4 };
+		int quickData[] = { 3, 5, 1, 2, 4, 8, 9 };
 		System.out.print("快速排序前: ");
 		System.out.println(Arrays.toString(quickData));
 		
-		QuickSort.quickSort(quickData, quickData.length);
+		QuickSort.qSort(quickData, 0, quickData.length-1);
 		System.out.print("快速排序后: ");
 		System.out.println(Arrays.toString(quickData));
-
+		
 		
 		
 		System.out.println("################################");
