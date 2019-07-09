@@ -16,7 +16,7 @@ public class ShellSort {
 			for (int i = step; i < len; i++) {
 				int value = arr[i];
 				int j = i - step;
-				for (; j >= 0; j -= step) {
+				for (; j >= 0; j -= step) {  // 直接插入排序
 					if (value < arr[j]) {
 						arr[j + step] = arr[j];
 					} else {

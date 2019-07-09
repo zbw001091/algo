@@ -16,7 +16,6 @@ public class InsertionSortAdd {
 
     /**
      * 查询插入位置时， 从头至尾搜索
-     * @param data
      */
     private static void fromStartToEnd(int[] data) {
         for (int i=1; i < data.length; i++) {

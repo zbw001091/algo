@@ -35,6 +35,9 @@ public class BucketSort {
 
 		// 桶数量
 		int bucketCount = (maxValue - minValue) / bucketSize + 1;
+		System.out.println("maxValue: " + maxValue);
+		System.out.println("minValue: " + minValue);
+		System.out.println("bucketCount桶数量: " + bucketCount);
 		int[][] buckets = new int[bucketCount][bucketSize];
 		int[] indexArr = new int[bucketCount];
 
