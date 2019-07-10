@@ -26,11 +26,11 @@ public class SortApplication {
 		
 		
 		System.out.println("################################");
-		int insertionData[] = { 1, 5, 3, 2, 4 };
+		int insertionData[] = { 6, 3, 5, 2, 4 };
 		System.out.print("插入排序前: ");
 		System.out.println(Arrays.toString(insertionData));
 		
-		InsertionSort.insertionSort(insertionData, insertionData.length);
+		InsertionSort.insertionSortL2R(insertionData, insertionData.length);
 		System.out.print("插入排序后: ");
 		System.out.println(Arrays.toString(insertionData));
 		

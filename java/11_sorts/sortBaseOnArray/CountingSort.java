@@ -6,7 +6,7 @@ package sortBaseOnArray;
  */
 public class CountingSort {
 
-	// 计数排序，a是数组，n是数组大小。假设数组中存储的都是非负整数。
+	// 计数排序，a是数组，n是数组大小。假设数组中存储的都是"非负整数"。
 	public static void countingSort(int[] a, int n) {
 		if (n <= 1)
 			return;
@@ -44,7 +44,7 @@ public class CountingSort {
 			c[a[i]]--;
 		}
 
-		// 将结果拷贝会a数组
+		// 将结果拷贝回a数组
 		for (int i = 0; i < n; ++i) {
 			a[i] = r[i];
 		}
