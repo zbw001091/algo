@@ -164,6 +164,11 @@ public class SinglyLinkedList {
 		 */
 	}
 
+	// TODO 删除整个单链表
+	public void deleteSinglyLinkedList(Node root) {
+		// page 93 大话数据结构
+	}
+	
 	public void printAll() {
 		Node p = head;
 		while (p != null) {

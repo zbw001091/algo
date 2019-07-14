@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map.Entry;
 
+// 字典树未必是二叉树，而是N叉树。所以底层只能用链表来存储
 public class Trie {
 	public TrieNode root;
 
@@ -51,10 +52,7 @@ public class Trie {
 			node = node.children.get(c);
 		}
 
-		if (node.wordEnd) {
-			return true;
-		}
-		return false;
+		return node.wordEnd;
 	}
 
 	public void deleteWord(String word) {

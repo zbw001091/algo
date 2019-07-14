@@ -1,7 +1,9 @@
 
 /**
- * 基于链表实现的栈。
+ * 基于链表(单链表)实现的栈。
  *
+ * 注：单链表有head指针，栈需要top指针。就用单链表的head代表栈的top。
+ * 注意不是用单链表的tail，因为head操作O(1)，tail操作O(n)，性价比。
  * Author: Zheng
  */
 public class StackBasedOnLinkedList {
@@ -29,6 +31,16 @@ public class StackBasedOnLinkedList {
 		return value;
 	}
 
+	// TODO 若栈存在，销毁它
+	public void destroyStack() {
+		
+	}
+	
+	// TODO 返回栈的元素个数
+	public int stackLength() {
+		return 0;
+	}
+	
 	public void printAll() {
 		Node p = top;
 		while (p != null) {

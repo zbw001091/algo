@@ -6,6 +6,12 @@
  * Author: Zheng
  * modify: xing, Gsealy
  */
+/**
+ * 读/写，O(1)，直接通过数组下标
+ * 插入/删除，O(n)
+ * @author ZhangBangwei
+ *
+ */
 public class Array {
     //定义整型数据data保存数据
     public int data[];
@@ -27,7 +33,8 @@ public class Array {
         return data[index];
     }
 
-    //插入元素:头部插入，尾部插入
+    // 插入元素:头部插入，尾部插入
+    // O(n)
     public boolean insert(int index, int value){
         //数组中无元素 
 
@@ -49,13 +56,14 @@ public class Array {
             return false;
         }
         // 位置合法
-        for( int i = count; i > index; --i){
+        for(int i = count; i > index; --i){
             data[i] = data[i - 1];
         }
         data[index] = value;
         ++count;
         return true;
     }
+    
     //根据索引，删除数组中元素
     public boolean delete(int index){
         if (index<0 || index >=count) return false;
@@ -73,6 +81,7 @@ public class Array {
         --count;
         return true;
     }
+    
     public void printAll() {
         for (int i = 0; i < count; ++i) {
             System.out.print(data[i] + " ");
