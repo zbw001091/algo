@@ -37,6 +37,15 @@ public class QueueBasedOnLinkedList {
 		return value;
 	}
 
+	// TODO 返回队列元素个数
+	public int queueLength() {
+		int count = 0;
+		for (Node node = head; node != tail; node = node.next) {
+			count ++;
+		}
+		return count;
+	}
+	
 	public void printAll() {
 		Node p = head;
 		while (p != null) {
