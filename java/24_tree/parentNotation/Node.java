@@ -8,5 +8,9 @@ package parentNotation;
  */
 public class Node {
 	public int data;
-	public int parent; // 指向父节点的"数组"下标
+	public int parent; // 指向双亲节点的"数组"下标
+	
+	public Node(int data) {
+		this.data = data;
+	}
 }
