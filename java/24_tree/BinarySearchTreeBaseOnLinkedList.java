@@ -1,7 +1,7 @@
 // 用链表实现的排序二叉树
 public class BinarySearchTreeBaseOnLinkedList {
 	public Node tree;
-
+	
 	// 构建 排序二叉树
 	public void insert(int data) {
 		if (tree == null) {
@@ -27,6 +27,18 @@ public class BinarySearchTreeBaseOnLinkedList {
 		}
 	}
 
+	// 构建 完全二叉树（递归）
+	public Node buildCompleteBTree(int[] datas, int index) {
+		Node node = null;
+		if (index < datas.length) {
+//			System.out.println(index);
+			node = new Node(datas[index]);
+			node.left = buildCompleteBTree(datas, index * 2);
+			node.right = buildCompleteBTree(datas, index * 2 + 1);
+		}
+		return node;
+	}
+	
 	// O(log2n)
 	// 因为是排序二叉树（除了1个case，有序序列时会退化成单链表，O(n)）
 	public Node find(int data) {

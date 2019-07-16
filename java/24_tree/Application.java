@@ -28,6 +28,15 @@ public class Application {
 		System.out.print("后序遍历: ");
 		binaryTree.postTraverse(binaryTree.tree);
 		System.out.println();
+		
+		//-----------------------------------------------------------------
+		
+		// 完全二叉树，用递归来创建
+		int completeBTreeNodes[] = {0, 1, 2, 3, 4, 5, 6};
+		Node root = binaryTree.buildCompleteBTree(completeBTreeNodes, 1);
+		System.out.print("先序遍历: ");
+		binaryTree.preTraverse(root);
+		System.out.println();
 	}
 
 }
