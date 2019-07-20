@@ -1,4 +1,4 @@
-package directedGraph.adjacencyMatrix;
+package undirectedGraph.miniSpanTree;
 
 
 /**
