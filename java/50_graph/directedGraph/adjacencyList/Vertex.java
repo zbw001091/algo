@@ -5,11 +5,11 @@ package directedGraph.adjacencyList;
  *
  */
 public class Vertex<Type> {
-	private Type data;
-	private EdgeNode adjList;
+	public Type data;
+	public EdgeNode firstEdge;
 	
 	public Vertex(Type data) {
 		this.data = data;
-		this.adjList = null;
+		this.firstEdge = null;
 	}	
 }
