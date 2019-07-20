@@ -33,7 +33,7 @@ public class GraphAdjList<Type> {
 		if (vertexCurrNum >= vertexMaxNum) { // 图，满了
 			return;
 		}
-		vertexs[vertexCurrNum++] = new Vertex(data);
+		vertexs[vertexCurrNum++] = new Vertex<Type>(data);
 	}
 	
 	/**
@@ -85,7 +85,7 @@ public class GraphAdjList<Type> {
 	}
 	
 	/**
-	 * 深度优先遍历
+	 * 邻接表 深度优先遍历
 	 * 适用于：连通图 and 非连通图
 	 */
 	public void DFSTraverse() {

@@ -7,15 +7,17 @@ import directedGraph.adjacencyMatrix.Vertex;
  *
  */
 public class GraphAdjMatrix<Type> {
-	private Vertex[] vertexs; // 顶点一维数组
-	private int[][] arcs; // 边/弧二维数组
+	private Vertex<Type>[] vertexs; // 顶点一维数组
+	private int[][] arcs; // 边/弧二维数组。对于普通边/弧就存0/1，对于带权图就存weight
 	private int vertexMaxNum; // 顶点最大允许个数
 	private int vertexCurrNum = 0; // 当前Graph里的已有的顶点个数
+	private boolean[] visited;
 	
 	public void createGraph(int vertexMaxNum) {
 		this.vertexMaxNum = vertexMaxNum;
 		this.vertexs = new Vertex[vertexMaxNum];
 		this.arcs = new int[vertexMaxNum][vertexMaxNum];
+		this.visited = new boolean[vertexMaxNum];
 	}
 	
 	/**
@@ -26,7 +28,7 @@ public class GraphAdjMatrix<Type> {
 		if (vertexCurrNum >= vertexMaxNum) { // 图，满了
 			return;
 		}
-		vertexs[vertexCurrNum++] = new Vertex(data);
+		vertexs[vertexCurrNum++] = new Vertex<Type>(data);
 	}
 	
 	/**
@@ -56,13 +58,66 @@ public class GraphAdjMatrix<Type> {
 		this.arcs[to][from] = weight;
 	}
 	
-	// TODO 邻接矩阵 深度优先遍历
+	/** 
+	 * 邻接矩阵 深度优先遍历
+	 * 适用于：连通图 and 非连通图
+	 */
 	public void DFSTraverse() {
-		
+		for (int i = 0; i < this.vertexMaxNum; ++i) {
+			this.visited[i] = false;
+		}
+		for (int i = 0; i < this.vertexMaxNum; ++i) {
+			if (!this.visited[i]) {
+				DFS(i);
+			}
+		}
+	}
+	
+	/**
+	 * @param i 从哪个顶点开始深度优先遍历
+	 * i：矩阵的行
+	 * colume：矩阵的列
+	 */
+	private void DFS(int i) {
+		System.out.println(this.vertexs[i].data);
+		this.visited[i] = true;
+		for (int colume = 0; colume < this.vertexMaxNum; ++colume) {
+			if ((this.visited[colume] == false) && (this.arcs[i][colume] != 0) && (i != colume)) {
+				DFS(colume);
+			}
+		}
 	}
 	
 	// TODO 邻接矩阵 广度优先遍历
 	public void HFSTraverse() {
-		
+		for (int i = 0; i < this.vertexMaxNum; ++i) {
+			this.visited[i] = false;
+		}
+		for (int i = 0; i < this.vertexMaxNum; ++i) {
+			if (!this.visited[i]) {
+				HFS(i);
+			}
+		}
+	}
+	
+	/**
+	 * @param i 从哪个顶点开始广度优先遍历
+	 * i：矩阵的行
+	 * colume：矩阵的列
+	 */
+	private void HFS(int i) {
+		System.out.println(this.vertexs[i].data);
+		this.visited[i] = true;
+		while (dequeue队列不是空) {
+			int row = dequeue();
+			for (int colume = 0; colume < this.vertexMaxNum; ++colume) {
+				if ((this.visited[colume] == false) && (this.arcs[row][colume] != 0) && (row != colume)) {
+					System.out.println(this.vertexs[colume].data);
+					this.visited[colume] = true;
+					enqueue(colume);
+				}
+			}
+		}
+			
 	}
 }

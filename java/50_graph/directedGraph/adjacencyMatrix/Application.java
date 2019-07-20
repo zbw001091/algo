@@ -16,7 +16,7 @@ public class Application {
 		 *    \ | /
 		 * 		2
 		 */
-		GraphAdjMatrix directedGraph_connected = new GraphAdjMatrix();
+		GraphAdjMatrix<Integer> directedGraph_connected = new GraphAdjMatrix<Integer>();
 		directedGraph_connected.createGraph(4);
 		
 		for(int i = 0; i < 4; ++i) {
@@ -27,6 +27,9 @@ public class Application {
 		directedGraph_connected.insertArc(2, 3, 300);
 		directedGraph_connected.insertArc(3, 0, 400);
 		directedGraph_connected.insertArc(0, 2, 500);
+		System.out.println("begin to DFStraverse directedGraph_connected: ");
+		directedGraph_connected.DFSTraverse();
+		System.out.println("end DFStraverse directedGraph_connected");
 		
 		/**
 		 * 无向图/连通图
@@ -36,7 +39,7 @@ public class Application {
 		 *    \ | /
 		 * 		2
 		 */
-		GraphAdjMatrix undirectedGraph_connected = new GraphAdjMatrix();
+		GraphAdjMatrix<Integer> undirectedGraph_connected = new GraphAdjMatrix<Integer>();
 		undirectedGraph_connected.createGraph(4);
 		
 		for(int i = 0; i < 4; ++i) {

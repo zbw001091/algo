@@ -5,7 +5,7 @@ package directedGraph.adjacencyMatrix;
  *
  */
 public class Vertex<Type> {
-	private Type data;
+	public Type data;
 
 	public Vertex(Type data) {
 		this.data = data;
