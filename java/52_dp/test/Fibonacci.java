@@ -44,7 +44,7 @@ public class Fibonacci {
 		long hour2 = (l2 / (60 * 60 * 1000) - day2 * 24);
 		long min2 = ((l2 / (60 * 1000)) - day2 * 24 * 60 - hour2 * 60);
 		long s2 = (l2 / 1000 - day2 * 24 * 60 * 60 - hour2 * 60 * 60 - min2 * 60);
-		long millis2 = (l2 - day2 * 24 * 60 * 60 * 1000 - hour2 * 60 * 60 * 1000 - min2 * 60 * 1000 - s * 1000);
+		long millis2 = (l2 - day2 * 24 * 60 * 60 * 1000 - hour2 * 60 * 60 * 1000 - min2 * 60 * 1000 - s2 * 1000);
 		System.out.println("" + day2 + "天" + hour2 + "小时" + min2 + "分" + s2 + "秒" + millis2 + "毫秒");
 		System.out.println("result = " + result2);
 //		for (int i = 0; i < f.memoRecursive.length; ++i) {
@@ -60,7 +60,7 @@ public class Fibonacci {
 		long hour3 = (l3 / (60 * 60 * 1000) - day3 * 24);
 		long min3 = ((l3 / (60 * 1000)) - day3 * 24 * 60 - hour3 * 60);
 		long s3 = (l3 / 1000 - day3 * 24 * 60 * 60 - hour3 * 60 * 60 - min3 * 60);
-		long millis3 = (l3 - day3 * 24 * 60 * 60 * 1000 - hour3 * 60 * 60 * 1000 - min3 * 60 * 1000 - s * 1000);
+		long millis3 = (l3 - day3 * 24 * 60 * 60 * 1000 - hour3 * 60 * 60 * 1000 - min3 * 60 * 1000 - s3 * 1000);
 		System.out.println("" + day3 + "天" + hour3 + "小时" + min3 + "分" + s3 + "秒" + millis3 + "毫秒");
 		System.out.println("result = " + result3);
 //		for (int i = 0; i < f.dp.length; ++i) {
